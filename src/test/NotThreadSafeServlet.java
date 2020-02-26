@@ -30,6 +30,7 @@ public class NotThreadSafeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
+		// HashMap is not thread safe.
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("message", "Hello World.");
 		map.put("message", "Hello World...");
