@@ -3,6 +3,7 @@ package test;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,7 +32,7 @@ public class NotThreadSafeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		// HashMap is not thread safe.
-		HashMap<String, String> map = new HashMap<String, String>();
+		ConcurrentHashMap<String, String> map = new ConcurrentHashMap<String, String>();
 		map.put("message", "Hello World.");
 		map.put("message", "Hello World.........");
 		map.put("message", "Hello World.........");
