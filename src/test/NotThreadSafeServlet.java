@@ -33,6 +33,7 @@ public class NotThreadSafeServlet extends HttpServlet {
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("message", "Hello World.");
 		map.put("message", "Hello World.........");
+		map.put("message", "Hello World.........");
 		out.println(map.get("message"));
 	}
 
