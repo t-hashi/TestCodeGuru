@@ -63,7 +63,7 @@ public class TestServlet extends HttpServlet {
 			ex.printStackTrace();
 		} finally {
 			try {
-				//con.close();
+				con.close();
 				end = System.nanoTime();
 			} catch (Exception e) {
 				e.printStackTrace();
