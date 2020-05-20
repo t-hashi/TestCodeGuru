@@ -44,7 +44,6 @@ public class TestServlet extends HttpServlet {
 
 		try {
 			con = ds.getConnection();
-			//start = System.currentTimeMillis();
 			start = System.nanoTime();
 			PreparedStatement st = (PreparedStatement) con.createStatement();
 			st.setInt(1, 1);
