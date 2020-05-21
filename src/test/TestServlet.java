@@ -23,9 +23,6 @@ import javax.sql.DataSource;
 public class TestServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	@Resource(name = "jdbc/postgres")
-	private DataSource ds;
-
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -38,36 +35,10 @@ public class TestServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
-		Connection con = null;
 		long start = 0;
 		long end = 0;       
-
-		try {
-			con = ds.getConnection();
-			start = System.nanoTime();
-			PreparedStatement st = (PreparedStatement) con.createStatement();
-			st.setInt(1, 1);
-			//Statement st = (PreparedStatement) con.createStatement();
-			ResultSet rs = st.executeQuery("select id from test2 where id = ?");
-			int recordCount = 0;
-			while (rs.next()) {
-				out.println(rs.getInt("id"));
-				recordCount++;
-			}
-			out.println("<br>");
-			out.print("recordCount:");
-			out.println(recordCount);
-			out.println("<br>");
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		} finally {
-			try {
-				con.close();
-				end = System.nanoTime();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+		TestBean bean = new TestBean();
+		bean.doBusiness();
 		out.print("time:");
 		out.print((end - start)/1000);
 		out.println(" micro sec");
