@@ -25,13 +25,12 @@ public class TestBean {
 				System.out.println(rs.getInt("id"));
 				recordCount++;
 			}
-			System.out.print("recordCount:");
-			System.out.println(recordCount);
+			System.out.print("recordCount:" + recordCount);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
 			try {
-				con.close();
+				//con.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

@@ -32,7 +32,7 @@ public class NotThreadSafeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		NotThreadSafeBean bean = new NotThreadSafeBean();
-		out.println(bean.doBusiness().get("message"));
+		out.println(bean.doBusiness());
 	}
 
 	/**
